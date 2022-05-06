@@ -13,7 +13,8 @@ get_met_gdas1 <- function(days,
                           duration,
                           direction,
                           path_met_files) {
-  
+  # days in months for end hour detection
+  days_in_months = c(31,28,31,30,31,30,31,31,30,31,30,31)
   # Determine the minimum date (as a `Date`) for the model run
   if (direction == "backward") {
     min_date <- 
@@ -27,9 +28,13 @@ get_met_gdas1 <- function(days,
   
   # Determine the maximum date (as a `Date`) for the model run
   if (direction == "backward") {
-    max_date <- 
-      (lubridate::as_date(days[length(days)])) %>%
+    max_date <- (lubridate::as_date(days[length(days)])) %>% 
       lubridate::floor_date(unit = "day")
+    day_month <- month(max_date)
+    day_day <- day(max_date)
+    if(day_day == days_in_months[day_month]){
+      max_date <- max_date + 1
+    }
   } else if (direction == "forward") {
     max_date <- 
       (lubridate::as_date(days[length(days)]) + (duration / 24)) %>%
