@@ -30,8 +30,12 @@ get_met_gdas1 <- function(days,
   if (direction == "backward") {
     max_date <- (lubridate::as_date(days[length(days)])) %>% 
       lubridate::floor_date(unit = "day")
+    day_year <- year(max_date)
     day_month <- month(max_date)
     day_day <- day(max_date)
+    if(day_year%%4 == 0 || day_year%%400 == 0){
+      days_in_months[2] = 29
+    } # leap year + century feb month adjustment
     if(day_day == days_in_months[day_month]){
       max_date <- max_date + 1
     }
