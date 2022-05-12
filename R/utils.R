@@ -275,7 +275,7 @@ get_monthly_filenames <- function(days,
                                   direction,
                                   prefix = NULL,
                                   extension = NULL) {
-
+  
   # Determine the minimum month (as a `Date`) for the model run
   if (direction == "backward") {
     min_month <-
@@ -288,26 +288,39 @@ get_monthly_filenames <- function(days,
       min() %>%
       lubridate::floor_date(unit = "month")
   }
-
+  
   # Determine the maximum month (as a `Date`) for the model run
   if (direction == "backward") {
+    max_date <- (lubridate::as_date(days[length(days)])) %>% 
+      lubridate::floor_date(unit = "day")
+    day_year <- year(max_date)
+    day_month <- month(max_date)
+    day_day <- day(max_date)
+    if(day_year%%4 == 0 || day_year%%400 == 0){
+      days_in_months[2] = 29
+    } # leap year + century feb month adjustment
+    if(day_day == days_in_months[day_month]){
+      max_date <- max_date + 1
+      days <- lubridate::as_date(days, lubridate::as_date(max_date))
+    }
     max_month <-
       (lubridate::as_date(days)) %>%
       max() %>%
       lubridate::floor_date(unit = "month")
+    
   } else if (direction == "forward") {
     max_month <-
       (lubridate::as_date(days) + (duration / 24) + lubridate::days(1)) %>%
       max() %>%
       lubridate::floor_date(unit = "month")
   }
-
+  
   met_months <- seq(min_month, max_month, by = "1 month")
-
+  
   months_short <- met_months %>% to_short_month()
-
+  
   years_long <- lubridate::year(met_months)
-
+  
   paste0(prefix, years_long, months_short, extension)
 }
 
