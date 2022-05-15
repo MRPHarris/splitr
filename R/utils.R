@@ -291,6 +291,7 @@ get_monthly_filenames <- function(days,
   
   # Determine the maximum month (as a `Date`) for the model run
   if (direction == "backward") {
+    days_in_months = c(31,28,31,30,31,30,31,31,30,31,30,31)
     max_date <- (lubridate::as_date(days[length(days)])) %>% 
       lubridate::floor_date(unit = "day")
     day_year <- year(max_date)
@@ -301,7 +302,7 @@ get_monthly_filenames <- function(days,
     } # leap year + century feb month adjustment
     if(day_day == days_in_months[day_month]){
       max_date <- max_date + 1
-      days <- lubridate::as_date(days, lubridate::as_date(max_date))
+      days <- lubridate::ymd(days, lubridate::as_date(max_date))
     }
     max_month <-
       (lubridate::as_date(days)) %>%
