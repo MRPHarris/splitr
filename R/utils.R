@@ -332,7 +332,7 @@ get_daily_filenames <- function(days,
                                 prefix = NULL,
                                 suffix = NULL) {
 
-  # Determine the minimum month (as a `Date`) for the model run
+  # Determine the minimum day (as a `Date`) for the model run
   if (direction == "backward") {
 
     min_day <-
@@ -346,18 +346,20 @@ get_daily_filenames <- function(days,
       min()
   }
 
-  # Determine the maximum month (as a `Date`) for the model run
+  # Determine the maximum day (as a `Date`) for the model run
   if (direction == "backward") {
 
     max_day <-
       (lubridate::as_date(days)) %>%
-      max()
+      max() 
+    max_day <- max_day + 1 # HRS FIX 2022-11-24. Hours 22 and 23 are contained in the following day's met file.
 
   } else if (direction == "forward") {
 
     max_day <-
       (lubridate::as_date(days) + (duration / 24) + lubridate::days(1)) %>%
       max()
+    max_day <- max_day + 1 # HRS FIX 2022-11-24. Hours 22 and 23 are contained in the following day's met file.
   }
 
   met_days <-
