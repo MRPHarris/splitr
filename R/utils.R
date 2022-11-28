@@ -352,14 +352,14 @@ get_daily_filenames <- function(days,
     max_day <-
       (lubridate::as_date(days)) %>%
       max() 
-    max_day <- max_day + 1 # HRS FIX 2022-11-24. Hours 22 and 23 are contained in the following day's met file.
+    max_day <- max_day + 1 # HRS FIX 2022-11-24. Hours 22 and 23 are contained in the following day's met file for e.g. NAM 12, gfs0p25.
 
   } else if (direction == "forward") {
 
     max_day <-
       (lubridate::as_date(days) + (duration / 24) + lubridate::days(1)) %>%
       max()
-    max_day <- max_day + 1 # HRS FIX 2022-11-24. Hours 22 and 23 are contained in the following day's met file.
+    max_day <- max_day + 1 # HRS FIX 2022-11-24. Hours 22 and 23 are contained in the following day's met file for e.g. NAM 12, gfs0p25.
   }
 
   met_days <-
