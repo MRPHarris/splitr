@@ -4,13 +4,29 @@
 \alias{add_source}
 \title{Add source parameters to a dispersion model}
 \usage{
-add_source(model, name = NULL, lat = NULL, lon = NULL,
-  height = NULL, release_start = NULL, release_end = NULL,
-  rate = NULL, pdiam = NULL, density = NULL, shape_factor = NULL,
-  ddep_vel = NULL, ddep_mw = NULL, ddep_a_ratio = NULL,
-  ddep_d_ratio = NULL, ddep_hl_coeff = NULL, wdep_hl_coeff = NULL,
-  wdep_in_cloud = NULL, wdep_below_cloud = NULL, rad_decay = NULL,
-  resuspension = NULL)
+add_source(
+  model,
+  name = NULL,
+  lat = NULL,
+  lon = NULL,
+  height = NULL,
+  release_start = NULL,
+  release_end = NULL,
+  rate = NULL,
+  pdiam = NULL,
+  density = NULL,
+  shape_factor = NULL,
+  ddep_vel = NULL,
+  ddep_mw = NULL,
+  ddep_a_ratio = NULL,
+  ddep_d_ratio = NULL,
+  ddep_hl_coeff = NULL,
+  wdep_hl_coeff = NULL,
+  wdep_in_cloud = NULL,
+  wdep_below_cloud = NULL,
+  rad_decay = NULL,
+  resuspension = NULL
+)
 }
 \arguments{
 \item{model}{A dispersion model object.}

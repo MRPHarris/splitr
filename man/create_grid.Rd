@@ -4,8 +4,12 @@
 \alias{create_grid}
 \title{Create a grid of sites}
 \usage{
-create_grid(lat = 49.263, lon = -123.25, range = c(5, 5),
-  division = c(0.5, 0.5))
+create_grid(
+  lat = 49.263,
+  lon = -123.25,
+  range = c(5, 5),
+  division = c(0.5, 0.5)
+)
 }
 \arguments{
 \item{lat, lon}{Latitude and longitude values in decimal degrees for the

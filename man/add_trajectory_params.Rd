@@ -4,25 +4,33 @@
 \alias{add_trajectory_params}
 \title{Add model parameters}
 \usage{
-add_trajectory_params(model, lat = NULL, lon = NULL, height = NULL,
-  duration = NULL, days = NULL, daily_hours = NULL,
-  direction = "forward", met_type = "reanalysis", vert_motion = 0,
-  model_height = 2000, extended_met = FALSE, config = NULL,
-  ascdata = NULL, traj_name = NULL, binary_path = NULL,
-  met_dir = NULL, exec_dir = NULL, clean_up = TRUE)
+add_trajectory_params(
+  model,
+  lat = NULL,
+  lon = NULL,
+  height = NULL,
+  duration = NULL,
+  days = NULL,
+  daily_hours = NULL,
+  direction = "forward",
+  met_type = "reanalysis",
+  vert_motion = 0,
+  model_height = 2000,
+  extended_met = FALSE,
+  config = NULL,
+  ascdata = NULL,
+  traj_name = NULL,
+  binary_path = NULL,
+  met_dir = NULL,
+  exec_dir = NULL,
+  softrun = FALSE,
+  clean_up = TRUE
+)
 }
 \arguments{
 \item{model}{A splitr modeling object.}
 
-\item{lat}{The receptor position in terms of latitude and
-longitude (both in decimal degrees), and height in meters above ground
-level.}
-
-\item{lon}{The receptor position in terms of latitude and
-longitude (both in decimal degrees), and height in meters above ground
-level.}
-
-\item{height}{The receptor position in terms of latitude and
+\item{lat, lon, height}{The receptor position in terms of latitude and
 longitude (both in decimal degrees), and height in meters above ground
 level.}
 

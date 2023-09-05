@@ -4,8 +4,14 @@
 \alias{add_emissions}
 \title{Add emissions parameters to a dispersion model}
 \usage{
-add_emissions(model, rate = NULL, duration = NULL, start_day = NULL,
-  start_hour = NULL, name = NULL)
+add_emissions(
+  model,
+  rate = NULL,
+  duration = NULL,
+  start_day = NULL,
+  start_hour = NULL,
+  name = NULL
+)
 }
 \arguments{
 \item{model}{a splitr modeling object.}

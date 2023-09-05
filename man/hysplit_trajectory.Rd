@@ -4,12 +4,27 @@
 \alias{hysplit_trajectory}
 \title{Conduct HYSPLIT trajectory runs}
 \usage{
-hysplit_trajectory(lat = 49.263, lon = -123.25, height = 50,
-  duration = 24, days = NULL, daily_hours = 0,
-  direction = "forward", met_type = "reanalysis", vert_motion = 0,
-  model_height = 20000, extended_met = FALSE, config = NULL,
-  ascdata = NULL, traj_name = NULL, binary_path = NULL,
-  met_dir = NULL, exec_dir = NULL, clean_up = TRUE)
+hysplit_trajectory(
+  lat = 49.263,
+  lon = -123.25,
+  height = 50,
+  duration = 24,
+  days = NULL,
+  daily_hours = 0,
+  direction = "forward",
+  met_type = "reanalysis",
+  vert_motion = 0,
+  model_height = 20000,
+  extended_met = FALSE,
+  config = NULL,
+  ascdata = NULL,
+  traj_name = NULL,
+  binary_path = NULL,
+  met_dir = NULL,
+  exec_dir = NULL,
+  softrun = NULL,
+  clean_up = TRUE
+)
 }
 \arguments{
 \item{lat, lon, height}{The receptor position in terms of latitude and
