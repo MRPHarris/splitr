@@ -4,6 +4,8 @@
 #' directory and processes all files into a data frame object.
 #' @param output_folder The path of the directory containing the trajectory
 #'   endpoints files.
+#' @param recursive logical TRUE/FALSE to recurse into folders within the output
+#'   folder.
 #' @return A tibble with HYSPLIT trajectory data.
 #' @examples
 #' \dontrun{
@@ -14,15 +16,16 @@
 #'     output_folder = "traj--2015-06-16--23-58-44")
 #' }
 #' @export
-trajectory_read <- function(output_folder) {  
+trajectory_read <- function(output_folder,
+                            recursive = FALSE) {  
   
   # Get file list for trajectories from the specified folder
   trajectory_file_list <- 
     list.files(
       path = output_folder,
-      pattern = "^traj-.*"
+      pattern = "^traj-.*",
+      recursive = recursive
     )
-  
   # Initialize empty tibble with 12 columns
   traj_tbl <-
     dplyr::tibble(

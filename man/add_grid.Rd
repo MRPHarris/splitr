@@ -4,10 +4,22 @@
 \alias{add_grid}
 \title{Add lat/lon grid to a model}
 \usage{
-add_grid(model, lat = NULL, lon = NULL, range = c(5, 5),
-  division = c(0.5, 0.5), start_day = NULL, start_hour = NULL,
-  end_day = NULL, end_hour = NULL, duration = NULL, heights = NULL,
-  samp_type = "avg", samp_interval = 24, name = NULL)
+add_grid(
+  model,
+  lat = NULL,
+  lon = NULL,
+  range = c(5, 5),
+  division = c(0.5, 0.5),
+  start_day = NULL,
+  start_hour = NULL,
+  end_day = NULL,
+  end_hour = NULL,
+  duration = NULL,
+  heights = NULL,
+  samp_type = "avg",
+  samp_interval = 24,
+  name = NULL
+)
 }
 \arguments{
 \item{model}{A splitr modeling object}
