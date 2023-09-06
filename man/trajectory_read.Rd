@@ -4,7 +4,7 @@
 \alias{trajectory_read}
 \title{Read HYSPLIT trajectory output files into a data frame}
 \usage{
-trajectory_read(output_folder, recursive = FALSE)
+trajectory_read(output_folder, recursive = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{output_folder}{The path of the directory containing the trajectory
@@ -12,6 +12,9 @@ endpoints files.}
 
 \item{recursive}{logical TRUE/FALSE to recurse into folders within the output
 folder.}
+
+\item{verbose}{logical TRUE/FALSE to print number of trajectory tibbles
+successfully read in sequence during operation.}
 }
 \value{
 A tibble with HYSPLIT trajectory data.

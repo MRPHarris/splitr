@@ -6,6 +6,8 @@
 #'   endpoints files.
 #' @param recursive logical TRUE/FALSE to recurse into folders within the output
 #'   folder.
+#' @param verbose logical TRUE/FALSE to print number of trajectory tibbles 
+#'   successfully read in sequence during operation.
 #' @return A tibble with HYSPLIT trajectory data.
 #' @examples
 #' \dontrun{
@@ -17,8 +19,8 @@
 #' }
 #' @export
 trajectory_read <- function(output_folder,
-                            recursive = FALSE) {  
-  
+                            recursive = FALSE,
+                            verbose = FALSE) {  
   # Get file list for trajectories from the specified folder
   trajectory_file_list <- 
     list.files(
@@ -59,6 +61,14 @@ trajectory_read <- function(output_folder,
   
   # Process all trajectory files
   for (file_i in trajectory_file_list) {
+    
+    if(verbose){
+      if(file_i == trajectory_file_list[1]){
+        n = 1
+      } else {
+        n = n + 1
+      }
+    }
     
     file_i_path <- file.path(output_folder, file_i)
 
@@ -178,6 +188,10 @@ trajectory_read <- function(output_folder,
         dplyr::mutate(traj_dt_i = traj_dt[1])
       
       traj_tbl <- traj_tbl %>% dplyr::bind_rows(traj_tbl_i)
+      
+      if(verbose){
+        message(paste0(n,"/", length(trajectory_file_list)," complete."))
+      }
     }
   }
   
